@@ -16,10 +16,10 @@ public class WorkerService {
         this.workerRepository = workerRepository;
     }
 
-    public ResponseRows<WorkerModel> getWokerStatus() {
+    public ResponseRows<WorkerModel> getWokerStatus(String username, Long createAt, Integer accessCode) {
         ResponseRows<WorkerModel> responseRows = new ResponseRows<>();
 
-        List<WorkerModel> workerModelList = getCurrentWorkerStatus();
+        List<WorkerModel> workerModelList = getCurrentWorkerStatus(createAt, accessCode);
 
         workerModelList = workerRepository.saveAll(workerModelList);
 
@@ -28,11 +28,11 @@ public class WorkerService {
         return responseRows;
     }
 
-    public List<WorkerModel> getCurrentWorkerStatus() {
+    public List<WorkerModel> getCurrentWorkerStatus(Long createAt, Integer accessCode) {
         List<WorkerModel> workerModelList = new ArrayList<>();
-        Long createAt = System.currentTimeMillis();
         WorkerModel workerModel0 = new WorkerModel();
         workerModel0.setWorkerId(0);
+        workerModel0.setAccessCode(accessCode);
         workerModel0.setWorkerName("host p2_pc");
         workerModel0.setCreateAt(createAt);
         workerModel0.setCpuUsage("0 core(s) in use");
@@ -43,6 +43,7 @@ public class WorkerService {
 
         WorkerModel workerModel1 = new WorkerModel();
         workerModel1.setWorkerId(1);
+        workerModel1.setAccessCode(accessCode);
         workerModel1.setWorkerName("host p1_01");
         workerModel1.setCreateAt(createAt);
         workerModel1.setCpuUsage("3 core(s) in use");
@@ -52,6 +53,7 @@ public class WorkerService {
 
         WorkerModel workerModel2 = new WorkerModel();
         workerModel2.setWorkerId(2);
+        workerModel2.setAccessCode(accessCode);
         workerModel2.setWorkerName("host p2_00");
         workerModel2.setCreateAt(createAt);
         workerModel2.setCpuUsage("32 core(s) in use");
@@ -62,6 +64,7 @@ public class WorkerService {
 
         WorkerModel workerModel5 = new WorkerModel();
         workerModel5.setWorkerId(5);
+        workerModel5.setAccessCode(accessCode);
         workerModel5.setWorkerName("host filecoin");
         workerModel5.setCreateAt(createAt);
         workerModel5.setCpuUsage("48 core(s) in use");

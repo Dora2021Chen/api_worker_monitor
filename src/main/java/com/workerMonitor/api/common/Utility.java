@@ -1,11 +1,20 @@
 package com.workerMonitor.api.common;
 
 import com.google.gson.Gson;
+import com.workerMonitor.api.common.response.Const;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utility {
+    private static final Lock lock = new ReentrantLock();
+    private static Integer accessCode = 0;
+    private static final Pattern validUsernamePattern = Pattern.compile("admin_[\\d]+");
+
     public static String getGsonStr(Object object) {
         if (object == null) {
             return "";
@@ -34,5 +43,30 @@ public class Utility {
         }
 
         System.out.println(stringBuilder);
+    }
+
+    public static String getStatusMsg(Integer statusCode) {
+        if (Const.STATUS_MAP.containsKey(statusCode)) {
+            return Const.STATUS_MAP.get(statusCode);
+        }
+
+        return "invalid status code.";
+    }
+
+    public static Integer getAccessCode() {
+        lock.lock();
+        if (accessCode < 100000) {
+            accessCode++;
+        } else {
+            accessCode = 0;
+        }
+        lock.unlock();
+        return accessCode;
+    }
+
+    public static Boolean isValidUserName(String username) {
+        Matcher matcher = validUsernamePattern.matcher(username);
+        boolean isMatched = matcher.matches();
+        return isMatched;
     }
 }

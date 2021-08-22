@@ -1,7 +1,5 @@
 package com.workerMonitor.api.model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +27,17 @@ public class SystemLogModel {
     public void setCreateAt(Long createAt) {
         this.createAt = createAt;
     }
+
+    public Integer getAccessCode() {
+        return accessCode;
+    }
+
+    public void setAccessCode(Integer accessCode) {
+        this.accessCode = accessCode;
+    }
+
+    @Column(nullable = false)
+    private Integer accessCode;
 
     @Column(nullable = false)
     private Long createAt;  //milliseconds

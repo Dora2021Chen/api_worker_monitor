@@ -25,11 +25,22 @@ public class WorkerModel {
         this.createAt = createAt;
     }
 
+    public Integer getAccessCode() {
+        return accessCode;
+    }
+
+    public void setAccessCode(Integer accessCode) {
+        this.accessCode = accessCode;
+    }
+
     @Column(nullable = false)
     private Long createAt;  //milliseconds
 
     @Column(nullable = false)
     private Integer workerId;
+
+    @Column(nullable = false)
+    private Integer accessCode;
 
     @Column(nullable = false)
     private String workerName;
