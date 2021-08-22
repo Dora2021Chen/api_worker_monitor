@@ -23,8 +23,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Soccer Tournament API Doc")
-                .description("This is a restful api document for Soccer Tournament.")
+                .title("Worker Monitor API Doc")
+                .description("This is a restful api document for Worker Monitor.")
                 .version("1.0")
                 .build();
     }

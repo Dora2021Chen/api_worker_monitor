@@ -1,7 +1,6 @@
 package com.workerMonitor.api.common;
 
 import com.google.gson.Gson;
-import com.workerMonitor.api.common.response.Const;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,14 +42,6 @@ public class Utility {
         }
 
         System.out.println(stringBuilder);
-    }
-
-    public static String getStatusMsg(Integer statusCode) {
-        if (Const.STATUS_MAP.containsKey(statusCode)) {
-            return Const.STATUS_MAP.get(statusCode);
-        }
-
-        return "invalid status code.";
     }
 
     public static Integer getAccessCode() {

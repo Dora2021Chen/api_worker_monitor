@@ -21,7 +21,7 @@ public class WorkerService {
 
         List<WorkerModel> workerModelList = getCurrentWorkerStatus(createAt, accessCode);
 
-        workerModelList = workerRepository.saveAll(workerModelList);
+        workerModelList = workerRepository.saveAllAndFlush(workerModelList);
 
         responseRows.entities = workerModelList;
 

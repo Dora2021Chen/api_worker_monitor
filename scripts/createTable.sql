@@ -1,6 +1,7 @@
 /*
-drop table worker;
-drop table system_log;
+drop table if exists worker;
+drop table if exists system_log;
+drop table if exists hibernate_sequence;
 */
 
 create table worker (
@@ -40,5 +41,11 @@ partition by range(create_at) (
     partition pMax values less than maxvalue
 );
 
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
+#--populate the table,to tell the program library from which number to start the auto-generation id.
+INSERT INTO hibernate_sequence (next_val) VALUES (0);
 
