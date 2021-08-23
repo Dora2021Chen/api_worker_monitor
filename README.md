@@ -31,11 +31,11 @@ ResponseRows {
 
 WorkerModel{
 
-      id	            integer($int64)
+      id	        integer($int64)
 
       createAt	        integer($int64)
 
-      accessCode	    integer($int32)
+      accessCode	integer($int32)
 
       workerId	        integer($int32)
 
@@ -47,6 +47,6 @@ WorkerModel{
 
       vmemUsage	        string
 
-      workerName	    string
+      workerName	string
   
 }
