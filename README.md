@@ -9,6 +9,11 @@ test script using python is in the following file:
 https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/test.py
 after running this test script, the test result file will be generated in the same direction as the test.py file, with name testResult.txt
 
+When running in IDE, or the target folder, the result will be saved in workerStatus.csv, in the same folder as src, target
+
+When running outside the project source folder, the result will be saved in workerStatus.csv, in the same folder as the jar file
+
+At the same time, the result will be saved into database
 
 The API server uses default port 8080, uses MySQL database on localhost, with port 3306, and the database name is worker_monitor
 
