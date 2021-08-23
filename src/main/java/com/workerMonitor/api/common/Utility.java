@@ -1,9 +1,12 @@
 package com.workerMonitor.api.common;
 
 import com.google.gson.Gson;
+import com.workerMonitor.api.model.WorkerModel;
 
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
@@ -59,5 +62,36 @@ public class Utility {
         Matcher matcher = validUsernamePattern.matcher(username);
         boolean isMatched = matcher.matches();
         return isMatched;
+    }
+
+
+    public static void write2CsvFile(String username, List<WorkerModel> workerModelList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("result").append(System.currentTimeMillis()).append(".csv");
+        String fileName = stringBuilder.toString();
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.append("username").append(",");
+            writer.append("workerId").append(",");
+            writer.append("workerName").append(",");
+            writer.append("cpuUsage").append(",");
+            writer.append("ramUsage").append(",");
+            writer.append("vmemUsage").append(",");
+            writer.append("gpuUsage");
+            writer.append('\n');
+            for (WorkerModel workerModel : workerModelList) {
+                writer.append(username).append(",");
+                writer.append(workerModel.getWorkerId().toString()).append(",");
+                writer.append(workerModel.getWorkerName()).append(",");
+                writer.append(workerModel.getCpuUsage()).append(",");
+                writer.append(workerModel.getRamUsage()).append(",");
+                writer.append(workerModel.getVmemUsage()).append(",");
+                writer.append(workerModel.getGpuUsage());
+                writer.append('\n');
+            }
+
+            writer.flush();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

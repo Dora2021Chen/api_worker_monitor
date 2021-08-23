@@ -37,6 +37,23 @@ public class WorkerController {
         return responseRows;
     }
 
+    public void saveResult(ResponseRows<WorkerModel> responseRows, String username, Long createAt, Integer accessCode) {
+        SystemLogModel systemLogModel = new SystemLogModel();
+        systemLogModel.setCreateAt(createAt);
+        systemLogModel.setAdminId(username);
+        systemLogModel.setAccessCode(accessCode);
+        systemLogModel.setResultCode(responseRows.statusCode);
+        systemLogModel.setResultMsg(responseRows.statusMsg);
+        if (responseRows.statusCode == 0)
+            systemLogModel.setErrorCount(0);
+        else
+            systemLogModel.setErrorCount(1);
+
+        systemLogModel = systemLogService.save(systemLogModel).entity.get();
+
+        Utility.write2CsvFile(username, responseRows.entities);
+    }
+
     public ResponseRows<WorkerModel> checkParams(String username, Long createAt, Integer accessCode) {
         ResponseRows<WorkerModel> responseRows = new ResponseRows<>();
         if (username == null) {
