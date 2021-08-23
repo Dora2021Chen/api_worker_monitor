@@ -7,11 +7,12 @@ https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/createTable
 
 test script using python is in the following file:
 https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/test.py
-after running this test script, the test result file will be generated in the same direction as the test.py file, with name testResult.txt
 
-When running in IDE, or the target folder, the result will be saved in workerStatus.csv, in the same folder as src, target
+after running this test script, the test result file will be generated in the same directory as the test.py file, with name testResult.txt
 
-When running outside the project source folder, the result will be saved in workerStatus.csv, in the same folder as the jar file
+When running in IDE, or the target folder, after calling the restful API to get worker status, the result will be saved in workerStatus.csv, in the same folder as src, target
+
+When running outside the project source folder, after calling the restful API to get worker status, the result will be saved in workerStatus.csv, in the same folder as the jar file
 
 At the same time, the result will be saved into database
 
