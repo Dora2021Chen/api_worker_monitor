@@ -34,6 +34,9 @@ public class WorkerController {
         }
 
         responseRows = workerService.getWokerStatus(username, createAt, accessCode);
+
+        saveResult(responseRows, username, createAt, accessCode);
+
         return responseRows;
     }
 
@@ -49,9 +52,9 @@ public class WorkerController {
         else
             systemLogModel.setErrorCount(1);
 
-        systemLogModel = systemLogService.save(systemLogModel).entity.get();
+        systemLogService.save(systemLogModel);
 
-        Utility.write2CsvFile(username, responseRows.entities);
+        Utility.save2CsvFile(username, responseRows.entities);
     }
 
     public ResponseRows<WorkerModel> checkParams(String username, Long createAt, Integer accessCode) {
@@ -67,7 +70,7 @@ public class WorkerController {
             systemLogModel.setResultMsg(responseRows.statusMsg);
             systemLogModel.setErrorCount(1);
 
-            systemLogModel = systemLogService.save(systemLogModel).entity.get();
+            systemLogService.save(systemLogModel);
 
             return responseRows;
         }
@@ -83,7 +86,7 @@ public class WorkerController {
             systemLogModel.setResultMsg(responseRows.statusMsg);
             systemLogModel.setErrorCount(1);
 
-            systemLogModel = systemLogService.save(systemLogModel).entity.get();
+            systemLogService.save(systemLogModel);
             return responseRows;
         }
 
@@ -98,7 +101,7 @@ public class WorkerController {
             systemLogModel.setResultMsg(responseRows.statusMsg);
             systemLogModel.setErrorCount(1);
 
-            systemLogModel = systemLogService.save(systemLogModel).entity.get();
+            systemLogService.save(systemLogModel);
             return responseRows;
         }
 

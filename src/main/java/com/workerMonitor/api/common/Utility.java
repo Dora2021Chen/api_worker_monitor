@@ -3,6 +3,7 @@ package com.workerMonitor.api.common;
 import com.google.gson.Gson;
 import com.workerMonitor.api.model.WorkerModel;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,19 +66,27 @@ public class Utility {
     }
 
 
-    public static void write2CsvFile(String username, List<WorkerModel> workerModelList) {
+    public static void save2CsvFile(String username, List<WorkerModel> workerModelList) {
+        String userDirectory = System.getProperty("user.dir");
+        //System.out.println(userDirectory);
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("result").append(System.currentTimeMillis()).append(".csv");
+        stringBuilder.append(userDirectory).append("/workerStatus").append(".csv");
         String fileName = stringBuilder.toString();
-        try (FileWriter writer = new FileWriter(fileName)) {
-            writer.append("username").append(",");
-            writer.append("workerId").append(",");
-            writer.append("workerName").append(",");
-            writer.append("cpuUsage").append(",");
-            writer.append("ramUsage").append(",");
-            writer.append("vmemUsage").append(",");
-            writer.append("gpuUsage");
-            writer.append('\n');
+        File file = new File(fileName);
+        boolean fileExists = file.exists();
+
+        try (FileWriter writer = new FileWriter(fileName, true)) {
+            if (!fileExists) {
+                writer.append("username").append(",");
+                writer.append("workerId").append(",");
+                writer.append("workerName").append(",");
+                writer.append("cpuUsage").append(",");
+                writer.append("ramUsage").append(",");
+                writer.append("vmemUsage").append(",");
+                writer.append("gpuUsage");
+                writer.append('\n');
+            }
+
             for (WorkerModel workerModel : workerModelList) {
                 writer.append(username).append(",");
                 writer.append(workerModel.getWorkerId().toString()).append(",");

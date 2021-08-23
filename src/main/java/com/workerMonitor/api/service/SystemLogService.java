@@ -1,11 +1,10 @@
 package com.workerMonitor.api.service;
 
+import com.workerMonitor.api.common.response.Const;
 import com.workerMonitor.api.common.response.ResponseRow;
 import com.workerMonitor.api.model.SystemLogModel;
 import com.workerMonitor.api.repository.SystemLogRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class SystemLogService {
@@ -16,8 +15,12 @@ public class SystemLogService {
     }
 
     public ResponseRow<SystemLogModel> save(SystemLogModel systemLogModel) {
-        ResponseRow<SystemLogModel> responseRow = new ResponseRow<>();
-        responseRow.entity = Optional.of(systemLogRepository.save(systemLogModel));
+        ResponseRow<SystemLogModel> responseRow;
+        try {
+            responseRow = new ResponseRow<>(systemLogRepository.save(systemLogModel));
+        } catch (Exception ex) {
+            responseRow = new ResponseRow<>(Const.STATUS_CODE_FAIL, ex.getMessage());
+        }
 
         return responseRow;
     }

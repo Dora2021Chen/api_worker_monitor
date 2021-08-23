@@ -1,5 +1,6 @@
 package com.workerMonitor.api.service;
 
+import com.workerMonitor.api.common.response.Const;
 import com.workerMonitor.api.common.response.ResponseRows;
 import com.workerMonitor.api.model.WorkerModel;
 import com.workerMonitor.api.repository.WorkerRepository;
@@ -17,13 +18,16 @@ public class WorkerService {
     }
 
     public ResponseRows<WorkerModel> getWokerStatus(String username, Long createAt, Integer accessCode) {
-        ResponseRows<WorkerModel> responseRows = new ResponseRows<>();
+        ResponseRows<WorkerModel> responseRows;
+        try {
+            List<WorkerModel> workerModelList = getCurrentWorkerStatus(createAt, accessCode);
 
-        List<WorkerModel> workerModelList = getCurrentWorkerStatus(createAt, accessCode);
+            workerModelList = workerRepository.saveAllAndFlush(workerModelList);
 
-        workerModelList = workerRepository.saveAllAndFlush(workerModelList);
-
-        responseRows.entities = workerModelList;
+            responseRows = new ResponseRows<>(workerModelList);
+        } catch (Exception ex) {
+            responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL, ex.getMessage());
+        }
 
         return responseRows;
     }
@@ -35,9 +39,9 @@ public class WorkerService {
         workerModel0.setAccessCode(accessCode);
         workerModel0.setWorkerName("host p2_pc");
         workerModel0.setCreateAt(createAt);
-        workerModel0.setCpuUsage("0 core(s) in use");
-        workerModel0.setRamUsage("1% 1.726 GiB/125.9 GiB");
-        workerModel0.setVmemUsage("0% 1.726% GiB/261.9 GiB");
+        workerModel0.setCpuUsage("[                                ] 0 core(s) in use");
+        workerModel0.setRamUsage("[                                ] 1% 1.726 GiB/125.9 GiB");
+        workerModel0.setVmemUsage("[                                ] 0% 1.726% GiB/261.9 GiB");
         workerModel0.setGpuUsage("GeForce RTX 2070, not used");
         workerModelList.add(workerModel0);
 
@@ -46,9 +50,9 @@ public class WorkerService {
         workerModel1.setAccessCode(accessCode);
         workerModel1.setWorkerName("host p1_01");
         workerModel1.setCreateAt(createAt);
-        workerModel1.setCpuUsage("3 core(s) in use");
-        workerModel1.setRamUsage("17% 174.3 GiB/996 GiB");
-        workerModel1.setVmemUsage("13% 198.3% GiB/1.473 GiB");
+        workerModel1.setCpuUsage("[||||||                          ] 3 core(s) in use");
+        workerModel1.setRamUsage("[||||||||||                      ] 17% 174.3 GiB/996 GiB");
+        workerModel1.setVmemUsage("[||||||||                        ] 13% 198.3% GiB/1.473 GiB");
         workerModelList.add(workerModel1);
 
         WorkerModel workerModel2 = new WorkerModel();
@@ -56,9 +60,9 @@ public class WorkerService {
         workerModel2.setAccessCode(accessCode);
         workerModel2.setWorkerName("host p2_00");
         workerModel2.setCreateAt(createAt);
-        workerModel2.setCpuUsage("32 core(s) in use");
-        workerModel2.setRamUsage("3% 37.32 GiB/1008 GiB");
-        workerModel2.setVmemUsage("10% 157.3 GiB/1.485 TiB");
+        workerModel2.setCpuUsage("[||||||||||||||||||||||||||||||||] 32 core(s) in use");
+        workerModel2.setRamUsage("[|                               ] 3% 37.32 GiB/1008 GiB");
+        workerModel2.setVmemUsage("[||||||                          ] 10% 157.3 GiB/1.485 TiB");
         workerModel2.setGpuUsage("GeForce RTX 2080 Ti, not used");
         workerModelList.add(workerModel2);
 
@@ -67,9 +71,9 @@ public class WorkerService {
         workerModel5.setAccessCode(accessCode);
         workerModel5.setWorkerName("host filecoin");
         workerModel5.setCreateAt(createAt);
-        workerModel5.setCpuUsage("48 core(s) in use");
-        workerModel5.setRamUsage("13% 32.55 GiB/224 GiB");
-        workerModel5.setVmemUsage("43% 152.6 GiB/352 GiB");
+        workerModel5.setCpuUsage("[||||||||||||||||||||||||||||||||] 48 core(s) in use");
+        workerModel5.setRamUsage("[|||||||                         ] 13% 32.55 GiB/224 GiB");
+        workerModel5.setVmemUsage("[||||||||||||||||                ] 43% 152.6 GiB/352 GiB");
         workerModel5.setGpuUsage("GeForce RTX 1080 Ti, not used");
         workerModelList.add(workerModel5);
 
