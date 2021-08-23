@@ -31,22 +31,22 @@ ResponseRows {
 
 WorkerModel{
 
-  id	        integer($int64)
-  
-  createAt	  integer($int64)
-  
-  accessCode	integer($int32)
-  
-  workerId	  integer($int32)
-  
-  cpuUsage	  string
-  
-  gpuUsage	  string
-  
-  ramUsage	  string
-  
-  vmemUsage	  string
-  
-  workerName	string
+      id	        integer($int64)
+
+      createAt	  integer($int64)
+
+      accessCode	integer($int32)
+
+      workerId	  integer($int32)
+
+      cpuUsage	  string
+
+      gpuUsage	  string
+
+      ramUsage	  string
+
+      vmemUsage	  string
+
+      workerName	string
   
 }
