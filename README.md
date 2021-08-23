@@ -31,7 +31,7 @@ ResponseRows {
 
 WorkerModel{
 
-      id		integer($int64)
+      id                integer($int64)
 
       createAt		integer($int64)
 
