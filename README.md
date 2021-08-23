@@ -1,6 +1,15 @@
 # api_worker_monitor
 api_worker_monitor
 Provide restful API to get worker status, the result is in json format.
+
+table definition is in the following file:
+https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/createTable.sql
+
+test script using python is in the following file:
+https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/test.py
+after running this test script, the test result file will be generated in the same direction as the test.py file, with name testResult.txt
+
+
 The API server uses default port 8080, uses MySQL database on localhost, with port 3306, and the database name is worker_monitor
 
 The Swagger web page is: http://localhost:8080/swagger-ui.html#
