@@ -1,0 +1,65 @@
+{'entities': [{'accessCode': 1,
+               'cpuUsage': '[                                ] 0 core(s) in '
+                           'use',
+               'createAt': 1629727676732,
+               'gpuUsage': 'GeForce RTX 2070, not used',
+               'id': 10,
+               'ramUsage': '[                                ] 1% 1.726 '
+                           'GiB/125.9 GiB',
+               'vmemUsage': '[                                ] 0% 1.726% '
+                            'GiB/261.9 GiB',
+               'workerId': 0,
+               'workerName': 'host p2_pc'},
+              {'accessCode': 1,
+               'cpuUsage': '[||||||                          ] 3 core(s) in '
+                           'use',
+               'createAt': 1629727676732,
+               'gpuUsage': None,
+               'id': 11,
+               'ramUsage': '[||||||||||                      ] 17% 174.3 '
+                           'GiB/996 GiB',
+               'vmemUsage': '[||||||||                        ] 13% 198.3% '
+                            'GiB/1.473 GiB',
+               'workerId': 1,
+               'workerName': 'host p1_01'},
+              {'accessCode': 1,
+               'cpuUsage': '[||||||||||||||||||||||||||||||||] 32 core(s) in '
+                           'use',
+               'createAt': 1629727676732,
+               'gpuUsage': 'GeForce RTX 2080 Ti, not used',
+               'id': 12,
+               'ramUsage': '[|                               ] 3% 37.32 '
+                           'GiB/1008 GiB',
+               'vmemUsage': '[||||||                          ] 10% 157.3 '
+                            'GiB/1.485 TiB',
+               'workerId': 2,
+               'workerName': 'host p2_00'},
+              {'accessCode': 1,
+               'cpuUsage': '[||||||||||||||||||||||||||||||||] 48 core(s) in '
+                           'use',
+               'createAt': 1629727676732,
+               'gpuUsage': 'GeForce RTX 1080 Ti, not used',
+               'id': 13,
+               'ramUsage': '[|||||||                         ] 13% 32.55 '
+                           'GiB/224 GiB',
+               'vmemUsage': '[||||||||||||||||                ] 43% 152.6 '
+                            'GiB/352 GiB',
+               'workerId': 5,
+               'workerName': 'host filecoin'}],
+ 'statusCode': 0,
+ 'statusMsg': 'succeed'}
+pass
+{'entities': None, 'statusCode': 1005, 'statusMsg': 'invalid username: admin_'}
+pass
+{'entities': None,
+ 'statusCode': 1005,
+ 'statusMsg': 'invalid username: admin_-1'}
+pass
+{'entities': None,
+ 'statusCode': 1003,
+ 'statusMsg': 'parameter is empty: username'}
+pass
+{'entities': None,
+ 'statusCode': 1004,
+ 'statusMsg': 'parameter is too long: username'}
+pass

@@ -47,4 +47,14 @@ else:
     print("fail");
 
 
+res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1111111111111111111111111111111111111111111111111111111111111111111");
+resBody = res.json();
+pprint.pprint(resBody);
+
+if (resBody['statusCode'] == 1004):
+    print("pass");
+else:
+    print("fail");
+
+
 sys.stdout.close();

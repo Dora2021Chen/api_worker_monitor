@@ -90,6 +90,21 @@ public class WorkerController {
             return responseRows;
         }
 
+        if (username.trim().length() > Const.maxLen) {
+            responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_PARAM_TOO_LONG, "username");
+
+            SystemLogModel systemLogModel = new SystemLogModel();
+            systemLogModel.setCreateAt(createAt);
+            systemLogModel.setAdminId(username);
+            systemLogModel.setAccessCode(accessCode);
+            systemLogModel.setResultCode(responseRows.statusCode);
+            systemLogModel.setResultMsg(responseRows.statusMsg);
+            systemLogModel.setErrorCount(1);
+
+            systemLogService.save(systemLogModel);
+            return responseRows;
+        }
+
         if (!Utility.isValidUserName(username)) {
             responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_INVALID_USERNAME, username);
 

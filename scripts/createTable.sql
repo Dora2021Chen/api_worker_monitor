@@ -5,7 +5,7 @@ drop table if exists hibernate_sequence;
 */
 
 create table worker (
-    id            bigint        not null,
+    id            bigint        not null, #--when using jdbc to access database, this column is unnecessary
 	create_at     bigint        not null,
 	worker_id     int           not null,
 	access_code   int           not null, #-- a number is increased in range(0,100000) to make (create_at,worker_id,access_code) unique
@@ -25,7 +25,7 @@ partition by range(create_at) (
 
 
 create table system_log (
-    id            bigint        not null,
+    id            bigint        not null, #--when using jdbc to access database, this column is unnecessary
 	create_at     bigint        not null,
     admin_id      varchar(50)   not null,
 	access_code   int           not null, #-- a number is increased in range(0,100000) to make (create_at,admin_id,access_code) unique
