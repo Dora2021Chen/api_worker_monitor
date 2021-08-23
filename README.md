@@ -2,13 +2,13 @@
 api_worker_monitor
 Provide restful API to get worker status, the result is in json format.
 
-table definition is in the following file:
+Table definition is in the following file:
 https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/createTable.sql
 
-test script using python is in the following file:
+Test script using python is in the following file:
 https://github.com/Dora2021Chen/api_worker_monitor/tree/main/scripts/test.py
 
-after running this test script, the test result file will be generated in the same directory as the test.py file, with name testResult.txt
+After running this test script, the test result file will be generated in the same directory as the test.py file, with name testResult.txt
 
 When running in IDE, or the target folder, after calling the restful API to get worker status, the result will be saved in workerStatus.csv, in the same folder as src, target
 
@@ -20,9 +20,9 @@ The API server uses default port 8080, uses MySQL database on localhost, with po
 
 The Swagger web page is: http://localhost:8080/swagger-ui.html#
 
-the request url is as follows: http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1
+The request url is as follows: http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1
 
-the result is in the following format
+The result is in the following format
 
 ResponseRows {
 
