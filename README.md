@@ -20,33 +20,33 @@ the result is in the following format
 
 ResponseRows {
 
-    public integer($int32) statusCode;  //0:succeed, >=1000:fail
-    
-    public string statusMsg;
-    
-    public List<WorkerModel> entities;
+        public integer($int32)      statusCode;  //0:succeed, >=1000:fail
+
+        public string               statusMsg;
+
+        public List<WorkerModel>    entities;
     
 }
 
 
 WorkerModel{
 
-      id	        integer($int64)
+      id	            integer($int64)
 
-      createAt	  integer($int64)
+      createAt	        integer($int64)
 
-      accessCode	integer($int32)
+      accessCode	    integer($int32)
 
-      workerId	  integer($int32)
+      workerId	        integer($int32)
 
-      cpuUsage	  string
+      cpuUsage	        string
 
-      gpuUsage	  string
+      gpuUsage	        string
 
-      ramUsage	  string
+      ramUsage	        string
 
-      vmemUsage	  string
+      vmemUsage	        string
 
-      workerName	string
+      workerName	    string
   
 }
