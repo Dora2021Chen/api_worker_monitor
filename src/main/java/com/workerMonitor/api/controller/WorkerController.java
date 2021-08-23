@@ -18,6 +18,8 @@ public class WorkerController {
     private final WorkerService workerService;
     private final SystemLogService systemLogService;
 
+    private final String actionNameGetWorkerStats = "worker/getWorkerStats";
+
     public WorkerController(WorkerService workerService, SystemLogService systemLogService) {
         this.workerService = workerService;
         this.systemLogService = systemLogService;
@@ -42,6 +44,7 @@ public class WorkerController {
 
     public void saveResult(ResponseRows<WorkerModel> responseRows, String username, Long createAt, Integer accessCode) {
         SystemLogModel systemLogModel = new SystemLogModel();
+        systemLogModel.setActionName(actionNameGetWorkerStats);
         systemLogModel.setCreateAt(createAt);
         systemLogModel.setAdminId(username);
         systemLogModel.setAccessCode(accessCode);
@@ -63,6 +66,7 @@ public class WorkerController {
             responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_PARAM_NULL, "username");
 
             SystemLogModel systemLogModel = new SystemLogModel();
+            systemLogModel.setActionName(actionNameGetWorkerStats);
             systemLogModel.setCreateAt(createAt);
             systemLogModel.setAdminId("username is null");
             systemLogModel.setAccessCode(accessCode);
@@ -79,6 +83,7 @@ public class WorkerController {
             responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_PARAM_EMPTY, "username");
 
             SystemLogModel systemLogModel = new SystemLogModel();
+            systemLogModel.setActionName(actionNameGetWorkerStats);
             systemLogModel.setCreateAt(createAt);
             systemLogModel.setAdminId("username is empty");
             systemLogModel.setAccessCode(accessCode);
@@ -94,6 +99,7 @@ public class WorkerController {
             responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_PARAM_TOO_LONG, "username");
 
             SystemLogModel systemLogModel = new SystemLogModel();
+            systemLogModel.setActionName(actionNameGetWorkerStats);
             systemLogModel.setCreateAt(createAt);
             systemLogModel.setAdminId(username.substring(0, Const.maxLen));
             systemLogModel.setAccessCode(accessCode);
@@ -109,6 +115,7 @@ public class WorkerController {
             responseRows = new ResponseRows<>(Const.STATUS_CODE_FAIL_INVALID_USERNAME, username);
 
             SystemLogModel systemLogModel = new SystemLogModel();
+            systemLogModel.setActionName(actionNameGetWorkerStats);
             systemLogModel.setCreateAt(createAt);
             systemLogModel.setAdminId(username);
             systemLogModel.setAccessCode(accessCode);
