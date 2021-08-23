@@ -95,7 +95,7 @@ public class WorkerController {
 
             SystemLogModel systemLogModel = new SystemLogModel();
             systemLogModel.setCreateAt(createAt);
-            systemLogModel.setAdminId(username);
+            systemLogModel.setAdminId(username.substring(0, Const.maxLen));
             systemLogModel.setAccessCode(accessCode);
             systemLogModel.setResultCode(responseRows.statusCode);
             systemLogModel.setResultMsg(responseRows.statusMsg);

@@ -6,55 +6,33 @@ from datetime import datetime
 
 sys.stdout=open("testResult.txt","w")
 
+def check(url, expectedResultCode):
+    print();
+    print(url);
+    res = requests.get(url);
+    resBody = res.json();
+    
+    print(resBody);
 
-res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_177");
-resBody = res.json();
-pprint.pprint(resBody);
+    if (resBody['statusCode'] == expectedResultCode):
+        print("pass");
+    else:
+        print("fail");
+        
+url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1111111111111111111111111111111111111111111111111111111111111111111";
+check(url,1004);
 
-if (resBody['statusCode'] == 0):
-    print("pass");
-else:
-    print("fail");
+url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=";
+check(url,1003);
 
+url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_-1";
+check(url,1005);
 
-res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_");
-resBody = res.json();
-pprint.pprint(resBody);
+url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_";
+check(url,1005);
 
-if (resBody['statusCode'] == 1005):
-    print("pass");
-else:
-    print("fail");
-
-
-res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_-1");
-resBody = res.json();
-pprint.pprint(resBody);
-
-if (resBody['statusCode'] == 1005):
-    print("pass");
-else:
-    print("fail");
-
-
-res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=");
-resBody = res.json();
-pprint.pprint(resBody);
-
-if (resBody['statusCode'] == 1003):
-    print("pass");
-else:
-    print("fail");
-
-
-res = requests.get("http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1111111111111111111111111111111111111111111111111111111111111111111");
-resBody = res.json();
-pprint.pprint(resBody);
-
-if (resBody['statusCode'] == 1004):
-    print("pass");
-else:
-    print("fail");
+url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_177";
+check(url,0);
 
 
 sys.stdout.close();
