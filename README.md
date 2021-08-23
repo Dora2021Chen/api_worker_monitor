@@ -39,14 +39,14 @@ WorkerModel{
 
       workerId		integer($int32)
 
-      cpuUsage		string
+      cpuUsage          string
 
-      gpuUsage		string
+      gpuUsage          string
 
-      ramUsage		string
+      ramUsage          string
 
-      vmemUsage		string
+      vmemUsage         string
 
-      workerName	string
+      workerName        string
   
 }
