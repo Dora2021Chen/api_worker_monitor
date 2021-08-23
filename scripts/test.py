@@ -19,19 +19,24 @@ def check(url, expectedResultCode):
     else:
         print("fail");
         
-url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_1111111111111111111111111111111111111111111111111111111111111111111";
+def getUrl(username):
+    apiUrl = "http://localhost:8080/api/workerMonitor/worker/getWorkerStats";
+    url = apiUrl+"?username="+username;
+    return url;
+
+url=getUrl("admin_1111111111111111111111111111111111111111111111111111111111111111111");
 check(url,1004);
 
-url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=";
+url=getUrl("");
 check(url,1003);
 
-url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_-1";
+url=getUrl("admin_-1");
 check(url,1005);
 
-url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_";
+url=getUrl("admin_");
 check(url,1005);
 
-url="http://localhost:8080/api/workerMonitor/worker/getWorkerStats?username=admin_177";
+url=getUrl("admin_177");
 check(url,0);
 
 
